@@ -3,7 +3,7 @@ fn main() {
         "{}",
         include_bytes!("../input.txt")
             .split(|b| *b == b'\n')
-            .map(|mut l| {
+            .map(|l| {
                 let h = l.len() / 2;
                 let this = &l[0..h];
                 let other = &l[h..l.len()];

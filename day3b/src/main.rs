@@ -1,23 +1,15 @@
-use itertools::Itertools;
-
 fn main() {
     println!(
         "{}",
         include_bytes!("../../day3a/input.txt")
             .split(|b| *b == b'\n')
+            .collect::<Vec<_>>()
             .chunks(3)
-            .into_iter()
-            .map(|mut l| {
-                let this = l.next();
-                let other = l.next();
-                let last = l.next();
-                let offending = this.into_iter().flatten().find(|e| {
-                    other.clone().into_iter().flatten().contains(e)
-                        && last.clone().into_iter().flatten().contains(e)
-                });
-                match offending {
+            .map(|l| {
+                let common = l[0].iter().find(|e| l[1].contains(e) && l[2].contains(e));
+                match common {
                     Some(n) => calculate_priority(*n) as usize,
-                    None => 0,
+                    None => panic!("missing common element"),
                 }
             })
             .sum::<usize>()
