@@ -11,6 +11,7 @@ DIR="$SCRIPT_DIR/$1"
 if [ -d "$DIR" ]; then
     cd "$DIR"
     cargo clippy -q
+    cargo fmt -q
     cargo build -q --release
     time cargo -q run --release
     cd -
