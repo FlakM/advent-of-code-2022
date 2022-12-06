@@ -34,8 +34,8 @@ AOC/day4a               time:   [84.456 µs 84.639 µs 84.803 µs]
 AOC/day4b               time:   [84.794 µs 84.895 µs 85.016 µs]
 AOC/day5a               time:   [192.65 µs 193.10 µs 193.49 µs]
 AOC/day5b               time:   [194.54 µs 195.50 µs 196.66 µs]
-AOC/day6a               time:   [82.321 µs 82.694 µs 83.098 µs]
-AOC/day6b               time:   [429.57 µs 432.03 µs 435.22 µs]
+AOC/day6a               time:   [884.23 ns 885.83 ns 887.61 ns]
+AOC/day6b               time:   [6.7763 µs 6.7882 µs 6.8010 µs]
 ```
 
 ## Running benchmarks
@@ -44,4 +44,7 @@ AOC/day6b               time:   [429.57 µs 432.03 µs 435.22 µs]
 ```shell
 # remove everything after 2> to have more complete reports
 BENCH=true cargo bench 2>/dev/null | grep "time:"
+
+# run benches for single day only
+BENCH=true cargo bench day6 2>/dev/null | grep "time:"
 ```
