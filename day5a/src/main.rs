@@ -1,10 +1,15 @@
 use std::collections::{HashMap, VecDeque};
+use std::time::Instant;
 
 use regex::Regex;
 
 fn main() {
+    let start = Instant::now();
     let input = include_str!("../input.txt");
-    println!("{}", perform(input))
+    println!("{}", perform(input));
+    let duration = start.elapsed();
+
+    println!("Time elapsed in main() is: {:?}", duration);
 }
 
 fn perform(input: &str) -> String {
