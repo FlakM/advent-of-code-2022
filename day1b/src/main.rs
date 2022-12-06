@@ -1,6 +1,11 @@
-fn main() {
+pub fn main() {
     let input = include_str!("../../day1a/input.txt");
-    println!("response: {} ", find_top_3_heavy_loaders(input))
+    let response = find_top_3_heavy_loaders(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn find_top_3_heavy_loaders(s: &str) -> usize {

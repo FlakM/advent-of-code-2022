@@ -84,9 +84,14 @@ fn calculate_score(s: &str) -> usize {
         .sum()
 }
 
-fn main() {
+pub fn main() {
     let input = include_str!("../input.txt");
-    println!("Result: {}", calculate_score(input))
+    let response = calculate_score(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 #[cfg(test)]

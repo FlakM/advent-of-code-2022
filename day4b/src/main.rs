@@ -1,8 +1,9 @@
-fn main() {
-    println!(
-        "{}",
-        count_overlapping(include_str!("../../day4a/input.txt"))
-    );
+pub fn main() {
+    let response = count_overlapping(include_str!("../../day4a/input.txt"));
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn convert(a: (&str, &str)) -> (usize, usize) {

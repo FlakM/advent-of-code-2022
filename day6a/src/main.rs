@@ -2,9 +2,14 @@ use std::{collections::HashSet, hash::Hash};
 
 use bounded_vec_deque::BoundedVecDeque;
 
-fn main() {
+pub fn main() {
     let input = include_str!("../input.txt");
-    println!("{}", perfom(input))
+    let response =  perfom(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn perfom(input: &str) -> usize {

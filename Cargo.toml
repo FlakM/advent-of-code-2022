@@ -1,0 +1,88 @@
+[package]
+name = "benches"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+criterion = "0.4.0"
+
+day1a = { path = "day1a" }
+day1b = { path = "day1b" }
+
+day2a = { path = "day2a" }
+day2b = { path = "day2b" }
+
+day3a = { path = "day3a" }
+day3b = { path = "day3b" }
+
+day4a = { path = "day4a" }
+day4b = { path = "day4b" }
+
+day5a = { path = "day5a" }
+day5b = { path = "day5b" }
+
+day6a = { path = "day6a" }
+day6b = { path = "day6b" }
+
+#day7a = { path = "day7a" }
+#day7b = { path = "day7b" }
+
+#day8a = { path = "day8a" }
+#day8b = { path = "day8b" }
+
+#day9a = { path = "day9a" }
+#day9b = { path = "day9b" }
+
+#day10a = { path = "day10a" }
+#day10b = { path = "day10b" }
+
+#day11a = { path = "day11a" }
+#day11b = { path = "day11b" }
+
+#day12a = { path = "day12a" }
+#day12b = { path = "day12b" }
+
+#day13a = { path = "day13a" }
+#day13b = { path = "day13b" }
+
+#day14a = { path = "day14a" }
+#day14b = { path = "day14b" }
+
+#day15a = { path = "day15a" }
+#day15b = { path = "day15b" }
+
+#day16a = { path = "day16a" }
+#day16b = { path = "day16b" }
+
+#day17a = { path = "day17a" }
+#day17b = { path = "day17b" }
+
+#day18a = { path = "day18a" }
+#day18b = { path = "day18b" }
+
+#day19a = { path = "day19a" }
+#day19b = { path = "day19b" }
+
+#day20a = { path = "day20a" }
+#day20b = { path = "day20b" }
+
+#day21a = { path = "day21a" }
+#day21b = { path = "day21b" }
+
+#day22a = { path = "day22a" }
+#day22b = { path = "day22b" }
+
+#day23a = { path = "day23a" }
+#day23b = { path = "day23b" }
+
+#day24a = { path = "day24a" }
+#day24b = { path = "day24b" }
+
+#day25a = { path = "day25a" }
+#day25b = { path = "day25b" }
+
+[[bench]]
+name = "all_days"
+harness = false

@@ -1,6 +1,11 @@
-fn main() {
+pub fn main() {
     let input = include_str!("../input.txt");
-    println!("response: {} ", find_heavy_loader(input))
+    let response = find_heavy_loader(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn find_heavy_loader(s: &str) -> usize {

@@ -10,9 +10,14 @@ fi
 cd "$SCRIPT_DAY"
     cargo new --bin "day$1a"
     cat << EOF >"day$1a/src/main.rs"
-fn main() {
+pub fn main() {
     let input = include_str!("../input.txt");
-    println!("{input}")
+    let response = perform(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn perfom(input: &str) -> usize {
@@ -30,13 +35,25 @@ mod tests {
     }
 }
 EOF
+
+    cat << EOF >>"day$1a/Cargo.toml"
+
+[lib]
+path = "src/main.rs"
+EOF
+
     touch "day$1a/input.txt"
 
     cargo new --bin "day$1b"
     cat << EOF >"day$1b/src/main.rs"
-fn main() {
+pub fn main() {
     let input = include_str!("../../day$1a/input.txt");
-    println!("{input}")
+    let response = perform(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn perfom(input: &str) -> usize {
@@ -54,5 +71,17 @@ mod tests {
     }
 }
 EOF
+    cat << EOF >>"day$1b/Cargo.toml"
+
+[lib]
+path = "src/main.rs"
+EOF
+
+    # uncomment configuration for benchmarks
+    sed -i "/day$1/s/.*\/\///g" benches/all_days.rs
+
+    # uncomment dependencies
+    sed -i "/day$1/s/^#//g" Cargo.toml
+    cargo fmt
 
 cd -

@@ -2,9 +2,14 @@ use std::collections::{HashMap, VecDeque};
 
 use regex::Regex;
 
-fn main() {
+pub fn main() {
     let input = include_str!("../../day5a/input.txt");
-    println!("{}", perform(input))
+    let response = perform(input);
+
+    // benchmark code should be quiet
+    if std::option_env!("BENCH").is_none() {
+        println!("response: {} ", response)
+    }
 }
 
 fn perform(input: &str) -> String {
