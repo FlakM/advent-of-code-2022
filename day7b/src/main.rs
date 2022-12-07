@@ -1,8 +1,4 @@
-use std::{
-    collections::HashMap,
-    path::PathBuf,
-    str::FromStr,
-};
+use std::{collections::HashMap, path::PathBuf, str::FromStr};
 
 pub fn main() {
     let input = include_str!("../../day7a/input.txt");
@@ -17,7 +13,7 @@ pub fn main() {
 #[derive(Debug)]
 enum FileEntry {
     Dir(PathBuf),
-    File((String, usize)),
+    File(usize),
 }
 
 fn calculate_size(tree: &HashMap<PathBuf, Vec<FileEntry>>, path: &PathBuf) -> usize {
@@ -25,7 +21,7 @@ fn calculate_size(tree: &HashMap<PathBuf, Vec<FileEntry>>, path: &PathBuf) -> us
         .iter()
         .map(|e| match e {
             FileEntry::Dir(path) => calculate_size(tree, path),
-            FileEntry::File((_, size)) => *size,
+            FileEntry::File(size) => *size,
         })
         .sum()
 }
@@ -42,33 +38,41 @@ fn perfom(input: &str) -> usize {
         }
         if line.starts_with("$ cd") {
             current_dir.push(line[5..].to_string());
-            state.entry(current_dir.clone()).or_insert(Vec::new());
+            state.entry(current_dir.clone()).or_default();
             continue;
         }
 
-        if line .starts_with("$ ls") {
+        if line.starts_with("$ ls") {
             continue;
         }
 
         if line.starts_with("dir") {
             let name = &line[4..];
             let dir = current_dir.join(name);
-            state.entry(dir.clone()).or_insert(Vec::new());
-            state.get_mut(&current_dir).unwrap().push(FileEntry::Dir(dir));
+            state.entry(dir.clone()).or_default();
+            state
+                .get_mut(&current_dir)
+                .unwrap()
+                .push(FileEntry::Dir(dir));
         } else {
             let file = line
                 .split_once(' ')
-                .map(|(size, name)| (name.to_string(), size.parse::<usize>().unwrap()))
+                .map(|(size, _)| size.parse::<usize>().unwrap())
                 .unwrap();
-            state.get_mut(&current_dir).map(|val| val.push(FileEntry::File(file)));
+            state
+                .get_mut(&current_dir)
+                .unwrap()
+                .push(FileEntry::File(file));
         }
-
     }
-    
 
-    let free_space = 70000000 -  calculate_size(&state, &PathBuf::from_str("/").unwrap());
-    state.iter().map(|e| calculate_size(&state, e.0)).filter(|size| *size >=  30000000 - free_space).min().unwrap()
-
+    let free_space = 70000000 - calculate_size(&state, &PathBuf::from_str("/").unwrap());
+    state
+        .iter()
+        .map(|e| calculate_size(&state, e.0))
+        .filter(|size| *size >= 30000000 - free_space)
+        .min()
+        .unwrap()
 }
 
 #[cfg(test)]

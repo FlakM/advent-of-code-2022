@@ -12,7 +12,7 @@ pub fn main() {
 
 enum FileEntry {
     Dir(PathBuf),
-    File((String, usize)),
+    File(usize),
 }
 
 fn calculate_size(tree: &HashMap<PathBuf, Vec<FileEntry>>, path: &PathBuf) -> usize {
@@ -20,7 +20,7 @@ fn calculate_size(tree: &HashMap<PathBuf, Vec<FileEntry>>, path: &PathBuf) -> us
         .iter()
         .map(|e| match e {
             FileEntry::Dir(path) => calculate_size(tree, path),
-            FileEntry::File((_, size)) => *size,
+            FileEntry::File(size) => *size,
         })
         .sum()
 }
@@ -58,7 +58,7 @@ fn perfom(input: &str) -> usize {
         } else {
             let file = line
                 .split_once(' ')
-                .map(|(size, name)| (name.to_string(), size.parse::<usize>().unwrap()))
+                .map(|(size, _)| size.parse::<usize>().unwrap())
                 .unwrap();
             state
                 .get_mut(&current_dir)
