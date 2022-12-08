@@ -3,7 +3,7 @@ use criterion::{criterion_group, criterion_main, Criterion};
 fn criterion_benchmark(c: &mut Criterion) {
     let mut group = c.benchmark_group("AOC");
     DAYS.iter().for_each(|(name, fun)| {
-        group.bench_function(name.to_string(), |b| b.iter(|| fun()));
+        group.bench_function(name.to_string(), |b| b.iter(fun));
     });
     group.finish();
 }
@@ -11,7 +11,7 @@ fn criterion_benchmark(c: &mut Criterion) {
 criterion_group!(benches, criterion_benchmark);
 criterion_main!(benches);
 
-static DAYS: &'static [(&'static str, fn())] = &[
+static DAYS: &[(&str, fn())] = &[
     ("day1a", day1a::main),
     ("day1b", day1b::main),
     ("day2a", day2a::main),
@@ -26,8 +26,8 @@ static DAYS: &'static [(&'static str, fn())] = &[
     ("day6b", day6b::main),
     ("day7a", day7a::main),
     ("day7b", day7b::main),
-    //("day8a",  day8a::main),
-    //("day8b",  day8b::main),
+    ("day8a", day8a::main),
+    ("day8b", day8b::main),
     //("day9a",  day9a::main),
     //("day9b",  day9b::main),
     //("day10a", day10a::main),
