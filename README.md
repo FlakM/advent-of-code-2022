@@ -42,6 +42,8 @@ AOC/day8a               time:   [1.5971 ms 1.6018 ms 1.6077 ms]
 AOC/day8b               time:   [2.0419 ms 2.0472 ms 2.0535 ms]
 AOC/day9a               time:   [499.60 µs 500.09 µs 500.64 µs]
 AOC/day9b               time:   [624.86 µs 625.28 µs 625.78 µs]
+AOC/day10a              time:   [4.0828 µs 4.0881 µs 4.0939 µs]
+AOC/day10b              time:   [4.5674 µs 4.5788 µs 4.5940 µs]
 ```
 
 ## Running benchmarks
