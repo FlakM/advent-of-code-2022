@@ -41,8 +41,9 @@ day10b = { path = "day10b" }
 day11a = { path = "day11a" }
 day11b = { path = "day11b" }
 
-#day12a = { path = "day12a" }
-#day12b = { path = "day12b" }
+day12a = { path = "day12a" }
+day12b = { path = "day12b" }
+petgraph = "0.6.2"
 
 #day13a = { path = "day13a" }
 #day13b = { path = "day13b" }
