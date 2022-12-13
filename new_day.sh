@@ -21,7 +21,7 @@ pub fn main() {
     }
 }
 
-fn perfom(input: &str) -> usize {
+fn perform(input: &str) -> usize {
     unimplemented!()
 }
 
@@ -32,7 +32,7 @@ mod tests {
     #[test]
     fn test_input() {
         let test_input = "";
-        assert_eq!(perfom(test_input), 0);
+        assert_eq!(perform(test_input), 0);
     }
 }
 EOF
@@ -57,7 +57,7 @@ pub fn main() {
     }
 }
 
-fn perfom(input: &str) -> usize {
+fn perform(input: &str) -> usize {
     unimplemented!()
 }
 
